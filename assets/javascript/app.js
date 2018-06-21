@@ -18,35 +18,41 @@ $(document).ready(function(){
  $("#answers").on("click", function(){
     $("#answers").empty()
         //show the quiz question
+
+        setInterval(myTimer, 1000);
+        function myTimer() {
+                counter --}
+
         $("#quizQuestions").html(questionOne.question); 
         
         //dynamically create the quiz buttons
         for (i=0; i < questionOne.choices.length; i++){  
             var buttons = $("<button>")
-            buttons.addClass("data-question", i)
-            buttons.text(i)
+            buttons.addClass("data-question", questionOne.choices[i])
+            buttons.text(questionOne.choices[i])
             $("#answers").append(buttons)
-        }
-
+        
+            
 
         //check if answer is correct
-        function checkAnswer(){
-            buttons.on("click", function(check){
+            buttons.on("click", function(){
                 if (question === this.answer){
                     correct()
                 }
                 else if ((question != answer) || (counter=0)){ 
                     wrong()
                 }
-            
-            })
-        }
+            }
+        
+        )}
+        
 
         //function to add points move to the next question and display a correct
         //with a timer
-        var answerCheck = setTimeout(correct, 5000)
+        //var answerCheck = setTimeout(correct, 5000)
         function correct(){
             correct++
+            counter = 10
             questionArrayCounter++
             $("#answers").text("That is correct")
         }
@@ -56,6 +62,6 @@ $(document).ready(function(){
             questionArrayCounter++
             $("answers").text("That is wrong")
         }
-    
+
   })
 })
