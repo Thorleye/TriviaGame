@@ -28,7 +28,7 @@ $(document).ready(function(){
         //dynamically create the quiz buttons
         for (i=0; i < questionOne.choices.length; i++){  
             var buttons = $("<button>")
-            buttons.addClass("data-question", questionOne.choices[i])
+            buttons.addClass("data-question", "questionOne.choices[i]")
             buttons.text(questionOne.choices[i])
             $("#answers").append(buttons)
         
@@ -62,6 +62,12 @@ $(document).ready(function(){
             questionArrayCounter++
             $("answers").text("That is wrong")
         }
-
+        //if you run out of questions display game over
+        if (questionArrayCounter > questionArray.length){
+            $("#quizQuestions").html("<p> Correct:" + correct + "</p><p> incorrect:" + incorrect + "</p>")
+        }
   })
 })
+
+//idea was to use a counter to go through an array of arrays and dynamically build the questions & buttons
+//busy at work, didnt have time to complete will finish next week
